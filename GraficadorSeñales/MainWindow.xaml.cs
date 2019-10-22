@@ -204,6 +204,20 @@ namespace GraficadorSeñales
                     plnGraficaResultante.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial, amplitudMaxima));
                 }
             }
+
+            if(CbOperacion.SelectedIndex == 4 )
+            {
+                int indiceMaximo = 0;
+                for(int i=0; 1<señalResultante.Muestras.Count/2; i++)
+                {
+                    if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y)
+                    {
+                        indiceMaximo = i;
+                    }
+                }
+                double frecuencia = (double)(indiceMaximo * señalResultante.FrecuenciaMuestreo) / (double)señalResultante.Muestras.Count;
+                lblHertz.Text = frecuencia.ToString("N") + "Hz";
+            }
             
             //original
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");
